@@ -7,3 +7,4 @@ Calm environmental intelligence interface infrastructure for Legacy Water USA.
 - visual-laws.md
 - motion-governance.md
 - responsive-laws.md
+- composition-governance.md
