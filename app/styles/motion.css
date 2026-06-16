@@ -1,0 +1,52 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.fade-in {
+  opacity: 0;
+
+  transform:
+    translateY(24px);
+
+  animation:
+    fadeUp 1400ms cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.fade-delay-1 {
+  animation-delay: 120ms;
+}
+
+.fade-delay-2 {
+  animation-delay: 240ms;
+}
+
+.fade-delay-3 {
+  animation-delay: 360ms;
+}
+
+.fade-delay-4 {
+  animation-delay: 480ms;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}

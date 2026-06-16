@@ -1,0 +1,57 @@
+.atmosphere-grid {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 140px
+    );
+
+  opacity: 0.14;
+
+  z-index: 0;
+}
+
+.atmosphere-glow {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255,255,255,0.035),
+      transparent 62%
+    );
+
+  opacity: 0.5;
+
+  z-index: 0;
+}
+
+.atmosphere-noise {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.012;
+
+  background-image:
+    url("https://grainy-gradients.vercel.app/noise.svg");
+
+  mix-blend-mode:
+    soft-light;
+
+  z-index: 0;
+}

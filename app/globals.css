@@ -1,0 +1,214 @@
+@import "./styles/tokens.css";
+@import "./styles/typography.css";
+@import "./styles/utilities.css";
+@import "./styles/hero.css";
+@import "./styles/navigation.css";
+@import "./styles/surfaces.css";
+@import "./styles/motion.css";
+@import "./styles/atmosphere.css";
+
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(59,130,246,0.08),
+      transparent 45%
+    ),
+    linear-gradient(
+      to bottom,
+      #020617,
+      #03113a,
+      #020617
+    );
+
+  color:
+    rgba(255,255,255,0.96);
+
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility;
+
+  overflow-x: hidden;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   ROOT STRUCTURE
+━━━━━━━━━━━━━━━━━━━ */
+
+main,
+section,
+nav,
+footer {
+  position: relative;
+
+  z-index: 1;
+}
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+
+  background: none;
+
+  border: none;
+
+  color: inherit;
+
+  outline: none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   PREMIUM INTERACTION
+━━━━━━━━━━━━━━━━━━━ */
+
+button {
+  transition:
+    transform 300ms ease,
+    opacity 300ms ease,
+    box-shadow 300ms ease;
+}
+
+button:hover {
+  transform:
+    translateY(-2px);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   SELECTION
+━━━━━━━━━━━━━━━━━━━ */
+
+::selection {
+  background:
+    rgba(96,165,250,0.35);
+
+  color: white;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   SCROLLBAR
+━━━━━━━━━━━━━━━━━━━ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background:
+    rgba(255,255,255,0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    rgba(96,165,250,0.28);
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(96,165,250,0.42);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   IOS FIXES
+━━━━━━━━━━━━━━━━━━━ */
+
+input,
+select,
+textarea {
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  border-radius: 0;
+
+  font-size: 16px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   IMAGES / VIDEO
+━━━━━━━━━━━━━━━━━━━ */
+
+img,
+video {
+  max-width: 100%;
+
+  display: block;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   FADE SYSTEM
+━━━━━━━━━━━━━━━━━━━ */
+
+.fade-in {
+  opacity: 0;
+
+  transform:
+    translateY(24px);
+
+  animation:
+    fadeUp 1200ms cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   MOBILE
+━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+}

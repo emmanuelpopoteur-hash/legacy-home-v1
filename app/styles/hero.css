@@ -1,0 +1,66 @@
+.hero-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+
+  padding-top: 16rem;
+  padding-bottom: 8rem;
+}
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1500px;
+}
+
+.hero-label {
+  margin-bottom: 3rem;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+
+  opacity: 0.16;
+}
+
+.hero-title {
+  max-width: 1400px;
+
+  font-size: clamp(4.8rem, 11vw, 10rem);
+
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  font-weight: 300;
+
+  color: rgba(255,255,255,0.96);
+
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    sans-serif;
+}
+
+.hero-bottom {
+  margin-top: 8rem;
+  max-width: 720px;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 1px;
+
+  background: rgba(255,255,255,0.12);
+
+  margin-bottom: 2rem;
+}
+
+.hero-description {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+
+  line-height: 1.5;
+
+  color: rgba(255,255,255,0.55);
+}

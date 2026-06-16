@@ -1,0 +1,106 @@
+.surface-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 2rem;
+}
+
+.surface-card {
+  position: relative;
+
+  min-height: 640px;
+
+  padding: 3rem;
+
+  border:
+    1px solid rgba(255,255,255,0.05);
+
+  background:
+    rgba(255,255,255,0.015);
+
+  backdrop-filter:
+    blur(24px);
+
+  border-radius: 40px;
+}
+
+.surface-label {
+  margin-bottom: 8rem;
+
+  font-size: 0.72rem;
+
+  letter-spacing: 0.38em;
+
+  opacity: 0.24;
+}
+
+.surface-title {
+  max-width: 420px;
+
+  font-size:
+    clamp(2.5rem, 3vw, 4rem);
+
+  line-height: 0.94;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 300;
+
+  color:
+    rgba(255,255,255,0.96);
+
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    sans-serif;
+}
+
+.surface-description {
+  margin-top: 8rem;
+
+  max-width: 420px;
+
+  font-size: 1.05rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(255,255,255,0.48);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE
+━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 1200px) {
+
+  .surface-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .surface-card {
+    min-height: auto;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .surface-card {
+    padding: 2rem;
+
+    border-radius: 28px;
+  }
+
+  .surface-label {
+    margin-bottom: 5rem;
+  }
+
+  .surface-description {
+    margin-top: 5rem;
+  }
+
+}
