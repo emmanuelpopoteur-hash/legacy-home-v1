@@ -1,3 +1,5 @@
+import { put } from "@vercel/blob";
+
 const response = (body: object, status: number) =>
   Response.json(body, { status, headers: { "cache-control": "no-store" } });
 
@@ -22,20 +24,16 @@ export async function POST(request: Request) {
     phone.length > 24 || phone.replace(/\D/g, "").length < 10
   ) return response({ error: "Invalid lead details" }, 400);
 
-  // A configured destination must acknowledge a durable save with saved:true.
-  // Never report success if the destination is absent or merely accepts a request.
-  const destination = process.env.WATER_TEST_LEADS_API_URL;
-  if (!destination) return response({ error: "Storage unavailable" }, 503);
+  if (!process.env.BLOB_STORE_ID) return response({ error: "Storage unavailable" }, 503);
   try {
-    const upstream = await fetch(destination, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        ...(process.env.WATER_TEST_LEADS_API_TOKEN
-          ? { authorization: `Bearer ${process.env.WATER_TEST_LEADS_API_TOKEN}` }
-          : {}),
-      },
-      body: JSON.stringify({
+    const id = crypto.randomUUID();
+    const createdAt = new Date().toISOString();
+    const pathname = `water-test-leads/${createdAt.slice(0, 10)}/${id}.json`;
+    const blob = await put(
+      pathname,
+      JSON.stringify({
+        id,
+        created_at: createdAt,
         zip,
         preferred_day: preferredDay,
         preferred_time: preferredTime,
@@ -43,15 +41,12 @@ export async function POST(request: Request) {
         phone,
         source: "water-test-qr",
       }),
-      cache: "no-store",
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!upstream.ok) return response({ error: "Unable to save request" }, 503);
-    const result = await upstream.json();
-    if (result?.saved !== true || typeof result.id !== "string" || !result.id)
-      return response({ error: "Save not confirmed" }, 503);
-    return response({ id: result.id, saved: true }, 201);
-  } catch {
+      { access: "private", contentType: "application/json" },
+    );
+    if (blob.pathname !== pathname) throw new Error("Save not confirmed");
+    return response({ id, saved: true }, 201);
+  } catch (error) {
+    console.error("Lead storage failed", error);
     return response({ error: "Unable to save request" }, 503);
   }
 }
